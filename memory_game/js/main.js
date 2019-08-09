@@ -56,4 +56,14 @@ function createBoard() {
   }
 }
 
+document.querySelector('button').addEventListener('click', function(){
+  let board = document.querySelector('#game-board');
+  while (board.firstChild) {
+      board.removeChild(board.firstChild);
+  }
+
+  cardsInPlay = [];
+  createBoard();
+});
+
 createBoard();

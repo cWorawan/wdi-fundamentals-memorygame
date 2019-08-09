@@ -100,3 +100,19 @@ font-size: 0;
   color: #F15B31;
   font-weight: 700;
 }
+
+button {
+  margin-top: 35px;
+  padding: 10px 20px;
+  background-color: #F15B31;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  color: #FFF;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #00A6B3;
+}
