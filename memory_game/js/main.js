@@ -43,6 +43,7 @@ createBoard();
 function checkForMatch() {
   if (cardsInPlay[0] === cardsInPlay[1]) {
     alert('You found a match!');
+    increaseScore();
   }
   else {
     alert('Sorry, try again.');
@@ -94,4 +95,9 @@ function shuffleArray(array) {
   }
 
   return array
+};
+
+function increaseScore() {
+  let score = document.getElementById('score');
+  score.textContent = Number(score.textContent) + 1
 };

@@ -16,7 +16,7 @@ nav {
 }
 
 main {
-  width: 850px;
+  width: 1000px;
   margin: 35px auto;
 }
 
@@ -101,6 +101,10 @@ font-size: 0;
   font-weight: 700;
 }
 
+.board {
+  position: relative;
+}
+
 button {
   margin-top: 35px;
   padding: 10px 20px;
@@ -115,4 +119,19 @@ button {
 
 button:hover {
   background-color: #00A6B3;
+}
+
+.score-board {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  position: absolute;
+  top: 40px;
+  transform: translateX(-50%);
+}
+
+#score {
+  font-size: 96px;
 }
