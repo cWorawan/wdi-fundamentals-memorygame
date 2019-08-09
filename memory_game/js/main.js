@@ -22,6 +22,24 @@ let cards = [
 ];
 let cardsInPlay = [];
 
+document.querySelector('button').addEventListener('click', function(){
+  let board = document.querySelector('#game-board');
+  while (board.firstChild) {
+      board.removeChild(board.firstChild);
+  }
+
+  cardsInPlay = [];
+  createBoard();
+});
+
+createBoard();
+
+
+
+
+
+
+
 function checkForMatch() {
   if (cardsInPlay[0] === cardsInPlay[1]) {
     alert('You found a match!');
@@ -47,23 +65,33 @@ function flipCard() {
 }
 
 function createBoard() {
+  let orderedCards = [];
+
   for (let i = 0; i < cards.length; i++) {
     let cardElement = document.createElement('img');
     cardElement.setAttribute('src', 'images/back.png');
     cardElement.setAttribute('data-id', i);
     cardElement.addEventListener('click', flipCard);
-    document.querySelector('#game-board').appendChild(cardElement);
+    orderedCards.push(cardElement);
+  }
+
+  let randomisedCards = shuffleArray(orderedCards);
+  for (let card of randomisedCards) {
+    document.querySelector('#game-board').appendChild(card);
   }
 }
 
-document.querySelector('button').addEventListener('click', function(){
-  let board = document.querySelector('#game-board');
-  while (board.firstChild) {
-      board.removeChild(board.firstChild);
+function shuffleArray(array) {
+  let currentIndex = array.length;
+
+  while (currentIndex) {
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    let tempValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = tempValue;
   }
 
-  cardsInPlay = [];
-  createBoard();
-});
-
-createBoard();
+  return array
+};
