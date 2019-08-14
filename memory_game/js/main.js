@@ -47,6 +47,11 @@ function checkForMatch() {
   }
   else {
     alert('Sorry, try again.');
+    let images = document.querySelectorAll('img');
+    for (let img of images) {
+      img.setAttribute('src', 'images/back.png')
+    }
+    cardsInPlay = [];
   }
 }
 
