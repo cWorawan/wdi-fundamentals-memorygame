@@ -34,24 +34,34 @@ document.querySelector('button').addEventListener('click', function(){
 
 createBoard();
 
+let modal = document.querySelector('.modal-container');
+let close = document.querySelector('.close');
 
+close.addEventListener('click', function() {
+  modal.classList.add('hide');
+});
 
+document.body.onkeyup = function(e){
+  if(e.key === ' ' || e.key === 'Escape'){
+    modal.classList.add('hide');
+  }
+}
 
 
 
 
 function checkForMatch() {
   if (cardsInPlay[0] === cardsInPlay[1]) {
-    alert('You found a match!');
     increaseScore();
+    notify('You found a match!');
   }
   else {
-    alert('Sorry, try again.');
     let images = document.querySelectorAll('img');
     for (let img of images) {
       img.setAttribute('src', 'images/back.png')
     }
     cardsInPlay = [];
+    notify('Sorry, try again.');
   }
 }
 
@@ -105,4 +115,9 @@ function shuffleArray(array) {
 function increaseScore() {
   let score = document.getElementById('score');
   score.textContent = Number(score.textContent) + 1
+};
+
+function notify(text) {
+  document.querySelector('#modal-text').textContent = text
+  modal.classList.remove('hide');
 };
