@@ -59,6 +59,7 @@ function checkForMatch() {
     let images = document.querySelectorAll('img');
     for (let img of images) {
       img.setAttribute('src', 'images/back.png')
+      img.addEventListener('click', flipCard);
     }
     cardsInPlay = [];
     notify('Sorry, try again.');
@@ -74,6 +75,7 @@ function flipCard() {
   console.log(card.suit);
 
   this.setAttribute('src', card.cardImage)
+  this.removeEventListener('click', flipCard);
 
   if (cardsInPlay.length === 2) {
     checkForMatch();
