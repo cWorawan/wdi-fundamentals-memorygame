@@ -39,15 +39,15 @@ let close = document.querySelector('.close');
 
 close.addEventListener('click', function() {
   modal.classList.add('hide');
+  flipBack();
 });
 
 document.body.onkeyup = function(e){
   if(e.key === ' ' || e.key === 'Escape'){
     modal.classList.add('hide');
+    flipBack();
   }
 }
-
-
 
 
 function checkForMatch() {
@@ -56,12 +56,6 @@ function checkForMatch() {
     notify('You found a match!');
   }
   else {
-    let images = document.querySelectorAll('img');
-    for (let img of images) {
-      img.setAttribute('src', 'images/back.png')
-      img.addEventListener('click', flipCard);
-    }
-    cardsInPlay = [];
     notify('Sorry, try again.');
   }
 }
@@ -81,6 +75,17 @@ function flipCard() {
     checkForMatch();
   }
 }
+
+function flipBack() {
+  if (cardsInPlay[0] !== cardsInPlay[1]) {
+    cardsInPlay = [];
+    let images = document.querySelectorAll('img');
+    for (let img of images) {
+      img.setAttribute('src', 'images/back.png')
+      img.addEventListener('click', flipCard);
+    }
+  }
+};
 
 function createBoard() {
   let orderedCards = [];
